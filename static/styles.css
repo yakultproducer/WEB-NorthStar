@@ -1,0 +1,144 @@
+/* General Setup */
+body {
+  margin: 0;
+  background-color: #828282;
+}
+
+canvas {
+  position: absolute;
+  z-index: 1;
+}
+
+h1 {
+  color: #fff;
+}
+
+/* Banner */
+.banner {
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.content {
+  top: 40%;
+  margin: 0 25% 0 40%;
+  padding: 10px;
+  position: relative;
+  z-index: 2;
+}
+
+.h-line {
+  margin: 80px 0;
+}
+
+/* NavBar */
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  position: -webkit-sticky;
+  /* Safari */
+  position: sticky;
+  top: 0;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 22px 25px;
+  font-size: 21px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #404040;
+}
+
+.navbar {
+  position: sticky;
+  margin-bottom: 5vh;
+  top: 0;
+  background-color: #333;
+  z-index: 100;
+  filter: drop-shadow(rgb(60, 60, 60) 0px 4px 8px);
+}
+
+/* main */
+/* .sub-container h1{
+  text-align: center;
+} */
+/* .sub-container p{
+  left: 50%;
+} */
+.sub-container {
+  padding: 0% 10%;
+}
+
+/* Tester */
+.home {
+  margin: 0% 20%;
+  height: 200vh;
+}
+
+/* table */
+#container {
+  display: flex;
+  align-items: flex-start;
+  /* Align items to the start (top) of the container */
+}
+
+#category-list {
+  width: 20%;
+  /* Set the width of the left column */
+  margin-right: 20px;
+  /* Add some margin between the columns for spacing */
+}
+
+#category-list ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#category-list li {
+  box-sizing: border-box;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  margin-bottom: 5px;
+}
+
+#category-list li:hover {
+  background-color: #f0f0f0;
+}
+
+#table-container {
+  flex: 1;
+  /* Allow the table to take up the remaining width */
+}
+
+#my-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#my-table th,
+#my-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+#my-table th {
+  background-color: #f2f2f2;
+}

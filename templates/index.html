@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Parallax Stars</title>
+</head>
+
+<body>
+    <!-- Container: Banner -->
+    <div class="banner">
+        <!-- The Starfield background -->
+        <canvas id="starfield"></canvas>
+        <!-- Banner Logo & Name -->
+        <div class="content">
+            <img width="120" height="120" href="../star-svgrepo-com.svg" />
+            <div class="banner-text">
+                <!-- <h1>Welcome.</h1> -->
+                <h1>NORTH-STAR Discord Bot</h1>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Container: Navbar -->
+    <div class="navbar">
+        <ul>
+            <li><a class="active" href="#home">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="http://localhost:5000/login">Log In</a></li>
+        </ul>
+    </div>
+
+    <!-- Container: Tester -->
+    <div id ="home" class="home">
+        <div class="sub-container">
+            <h1>Welcome to North-Star Project</h1>
+            <p>
+                Hello! I'm Johnathan, the creator of this Discord bot project. The primary aim of this bot is to
+                simplify
+                the management of Discord servers.
+                <br><br>
+                * This website's soul purpose is to practice how to connect a database within a website. Therefore, the
+                functionality may be buggy or missing. There are a lot improvement still need to be made. *
+
+            </p>
+        </div>
+        <!-- sub 1 -->
+        <div class="sub-container">
+            <h1>Get Started</h1>
+            <p>
+                Feel free to try out the bot by logging in with your Discord account.
+            </p>
+            <a href="http://localhost:5000/login">Login with Discord</a>
+        </div>
+        <!-- sub 2 -->
+        <div class="sub-container">
+            <h1>Technologies Used</h1>
+            <p>
+                This project is primarily built using Python and leverages a MongoDB database for data storage. Rest
+                assured, I do not collect any sensitive information. The bot only stores server-specific settings to
+                enhance your Discord experience.
+            </p>
+        </div>
+        <!-- sub 3 -->
+        <div class="sub-container">
+            <h1>Why This Project?</h1>
+            <p>
+                The inception of this project stems from my desire to utilize my expertise to craft something beneficial
+                for me and my friends. I aim to streamline Discord server management and foster better user experiences.
+                <br>
+                Thank you for considering North-Star! Feel free to explore its features and let me know your feedback.
+            </p>
+        </div>
+
+        <div class="h-line">
+            <hr>
+        </div>
+
+
+        <!-- Feature Sub -->
+        <div id="features">
+            <h1>Features: </h1>
+            <div id="container">
+                <div id="category-list">
+                    <ul>
+                        <li onclick="showCategory('Management')">Management</li>
+                        <li onclick="showCategory('Misc')">Misc</li>
+                        <li onclick="showCategory('Games')">Games</li>
+                    </ul>
+                </div>
+
+                <div id="table-container">
+                    <table id="my-table">
+                        <thead>
+                            <tr>
+                                <th>Command Name</th>
+                                <th>Description</th>
+                                <!-- <th>Usage</th> -->
+                                <!-- Add more headers as needed -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Data 1</td>
+                                <td>Data 2</td>
+                                <!-- Add more data cells as needed -->
+                            </tr>
+                            <!-- Add more rows as needed -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='stars.js') }}"></script>
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+
+</html>
