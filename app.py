@@ -14,17 +14,16 @@ MONGODB_TOKEN = os.getenv("MONGODB_TOKEN")
 cluster = pymongo.MongoClient(MONGODB_TOKEN)
 db = cluster.NorthStarDB
 setting = db.setting
-# user = db.users
 
 
 app = Flask(__name__)
 
 app.secret_key = os.urandom(24)
 # OAuth2 must make use of HTTPS in production environment.
-# os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"      # !! Only in development environment.
+os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "true"      # !! Only in development environment.
 
 app.config["DISCORD_CLIENT_ID"] = 929856180984111167                                    # Discord client ID.
-app.config["DISCORD_CLIENT_SECRET"] = os.environ.get("DISCORD_CLIENT_SECRET")           # Discord client secret.
+app.config["DISCORD_CLIENT_SECRET"] = os.getenv("DISCORD_CLIENT_SECRET")           # Discord client secret.
 app.config["DISCORD_REDIRECT_URI"] = "https://northstargalaxy.azurewebsites.net/callback"                 # URL to your callback endpoint.
 # app.config["DISCORD_REDIRECT_URI"] = "http://localhost:5000/callback" 
 app.config["DISCORD_BOT_TOKEN"] = ""                    # Required to access BOT resources.
@@ -37,6 +36,7 @@ def home():
 
 @app.route("/login/")
 def login():
+    discord.revoke()
     return discord.create_session(scope=['identify', 'guilds'])
 
 @app.route("/logout/")
