@@ -19,12 +19,12 @@ setting = db.setting
 
 app = Flask(__name__)
 
-app.secret_key = b"random bytes representing flask secret key"
+app.secret_key = os.urandom(24)
 # OAuth2 must make use of HTTPS in production environment.
-# os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "true"      # !! Only in development environment.
+# os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"      # !! Only in development environment.
 
 app.config["DISCORD_CLIENT_ID"] = 929856180984111167                                    # Discord client ID.
-app.config["DISCORD_CLIENT_SECRET"] = "OGojuN4VTFg0T1G8MYDZ_rVxI3MssjS3"                # Discord client secret.
+app.config["DISCORD_CLIENT_SECRET"] = os.environ.get("DISCORD_CLIENT_SECRET")           # Discord client secret.
 app.config["DISCORD_REDIRECT_URI"] = "https://northstargalaxy.azurewebsites.net/callback"                 # URL to your callback endpoint.
 # app.config["DISCORD_REDIRECT_URI"] = "http://localhost:5000/callback" 
 app.config["DISCORD_BOT_TOKEN"] = ""                    # Required to access BOT resources.
@@ -41,14 +41,12 @@ def login():
 
 @app.route("/logout/")
 def logout():
-    session.clear()
+    discord.revoke()
     return redirect(url_for('home'))
 
 @app.route("/callback/")
 def callback():
     data = discord.callback()
-    # user = discord.fetch_user()
-
     return redirect(url_for('.dashboard'))
 
 @app.route('/dashboard')
@@ -105,6 +103,7 @@ def update_mongodb():
 
 @app.errorhandler(Unauthorized)
 def redirect_unauthorized(e):
+    print("error happend")
     return redirect(url_for("login"))
 
 if __name__ == "__main__":
